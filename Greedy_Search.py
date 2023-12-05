@@ -12,7 +12,7 @@ def Greedy_Search(grid, originalmaze,d):
     mazecopy[0,0]=1
     while(True):
         flag = True
-        if(root.x==d-1 and root.y==d-1): return 1,2
+        if(root.x==d-1 and root.y==d-1): return path,mazecopy
         if(root.x<d-1):
             for connect in grid[root.x+1,root.y].connections:
                 flag1=True
@@ -85,7 +85,7 @@ def Greedy_Search(grid, originalmaze,d):
             mazecopy[root.x*2,root.y*2]=1
             mazecopy[path[-2].x*2 + root.x - path[-2].x,path[-2].y*2 + root.y - path[-2].y]=1
             cv2.imshow('Simmulate',originalmaze-cv2.resize(mazecopy*127,(600,600),interpolation=0))
-            cv2.waitKey(0)
+            cv2.waitKey(1)
         if(flag):
             trash.append(path.pop())
             if(len(path)<=0): return 1, 2

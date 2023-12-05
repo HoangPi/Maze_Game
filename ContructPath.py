@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def ShowPath(path,truemaze,d):
+def ShowPath(path,truemaze,d,org):
     if(path is None): return
 
     maze=np.zeros((d*2-1,d*2-1),dtype='uint8')
@@ -16,7 +16,7 @@ def ShowPath(path,truemaze,d):
         # cv2.waitKey(0)
     maze=cv2.resize(maze*127,(600,600),interpolation=0)
     r=cv2.resize(truemaze*127,(600,600),interpolation=0)
-    b=r.copy()
+    b=r.copy()+cv2.resize(org*127,(600,600),interpolation=0)
     g=r.copy()+maze
     cv2.imshow('Simmulate',cv2.merge((r,g,b)))
     
