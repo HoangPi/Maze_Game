@@ -1,2 +1,3 @@
 *.pyc
 maze_env/
+.vscode/
